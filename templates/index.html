@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Survey</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        
+        @import url("https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap");
+
+$blue: #2962ff;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 1vh;
+	font-size: 1.5em;
+	background: #212121;
+	color: #fff;
+	text-transform: uppercase;
+	gap: 20px;
+}
+
+h1 {
+	font-size: 2.5em;
+	text-decoration: underline;
+	@media (max-width: 768px) {
+		font-size: 1.3em;
+	}
+}
+
+.text-shadow {
+	font-style: italic;
+	text-transform: uppercase;
+	color: transparent;
+	-webkit-text-stroke: #fff;
+	-webkit-text-stroke-width: 1px;
+	text-shadow: 2px 2px 10px $blue;
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+	letter-spacing: 0.2em;
+	animation: flicker 0.5s ease-in-out infinite alternate;
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.tags small {
+	@media (max-width: 768px) {
+		font-size: 0.5em;
+	}
+}
+
+@keyframes flicker {
+	0% {
+		opacity: 0.5;
+		text-shadow: 2px 2px 10px $blue;
+	}
+	100% {
+		opacity: 1;
+		text-shadow: 2px 2px 20px $blue;
+	}
+}
+
+.pre {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    background-color: green; 
+    color: #ffffff; 
+    cursor: pointer;
+    align:center ;
+}
+  /* Hover effect */
+.btn:hover {
+    background-color: red ; /* #0056b3 Darker blue on hover */
+}
+
+
+.form-group
+{
+    color:#00008B;
+    font-weight: 500;
+}
+option{
+    
+}
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        
+        <section>
+            <h1 class="text-shadow"> -- Mental Health Predictor -- </h1>
+            <div class="tags">
+                <p class="text-shadow"><small>#Check-Your-Mental-Health #Working-Professional</small></p>
+            </div>
+        </section>
+
+
+        <form action="/predict" method="post">
+            <!-- Age -->
+            <div class="form-group">
+                <label for="Age">Age:(Between 15 to 70)</label>
+                <input type="number" class="form-control" id="Age" name="Age" required min="15" max="70">
+            </div>
+            <!-- Gender -->
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                <select class="form-control" id="Gender" name="Gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <!-- self_employed -->
+            <div class="form-group">
+                <label for="self_employed">Are you self-employed?</label>
+                <select class="form-control" id="self_employed" name="self_employed" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <!-- family_history -->
+            <div class="form-group">
+                <label for="family_history">Do you have a family history of mental illness?</label>
+                <select class="form-control" id="family_history" name="family_history" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <!-- work_interfere -->
+            <div class="form-group">
+                <label for="work_interfere">If you have a mental health condition, do you feel that it interferes with your work?</label>
+                <select class="form-control" id="work_interfere" name="work_interfere" required>
+                    <option value="Never">Never</option>
+                    <option value="Rarely">Rarely</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Often">Often</option>
+                </select>
+            </div>
+            <!-- remote_work -->
+            <div class="form-group">
+                <label for="remote_work">Do you work remotely (outside of an office) at least 50% of the time?</label>
+                <select class="form-control" id="remote_work" name="remote_work" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <!-- tech_company -->
+            <div class="form-group">
+                <label for="tech_company">Is your employer primarily a tech company/organization?</label>
+                <select class="form-control" id="tech_company" name="tech_company" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <!-- benefits -->
+            <div class="form-group">
+                <label for="benefits">Does your employer provide mental health benefits?</label>
+                <select class="form-control" id="benefits" name="benefits" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+            </div>
+            <!-- care_options -->
+            <div class="form-group">
+                <label for="care_options">Do you know the options for mental health care your employer provides?</label>
+                <select class="form-control" id="care_options" name="care_options" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Not sure">Not sure</option>
+                </select>
+            </div>
+            <!-- wellness_program -->
+            <div class="form-group">
+                <label for="wellness_program">Has your employer ever discussed mental health as part of an employee wellness program?</label>
+                <select class="form-control" id="wellness_program" name="wellness_program" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+            </div>
+            <!-- seek_help -->
+            <div class="form-group">
+                <label for="seek_help">Does your employer provide resources to learn more about mental health issues and how to seek help?</label>
+                <select class="form-control" id="seek_help" name="seek_help" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+            </div>
+            <!-- leave -->
+            <div class="form-group">
+                <label for="leave">How easy is it for you to take medical leave for a mental health condition?</label>
+                <select class="form-control" id="leave" name="leave" required>
+                    <option value="Very easy">Very easy</option>
+                    <option value="Somewhat easy">Somewhat easy</option>
+                    <option value="Somewhat difficult">Somewhat difficult</option>
+                    <option value="Very difficult">Very difficult</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+            </div>
+            <!-- mental_health_consequence -->
+            <div class="form-group">
+                <label for="mental_health_consequence">Do you think that discussing a mental health issue with your employer would have negative consequences?</label>
+                <select class="form-control" id="mental_health_consequence" name="mental_health_consequence" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Maybe">Maybe</option>
+                </select>
+            </div>
+            <!-- phys_health_consequence -->
+            <div class="form-group">
+                <label for="phys_health_consequence">Do you think that discussing a physical health issue with your employer would have negative consequences?</label>
+                <select class="form-control" id="phys_health_consequence" name="phys_health_consequence" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Maybe">Maybe</option>
+                </select>
+            </div>
+            <!-- coworkers -->
+            <div class="form-group">
+                <label for="coworkers">Would you be willing to discuss a mental health issue with your coworkers?</label>
+                <select class="form-control" id="coworkers" name="coworkers" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Some of them">Some of them</option>
+                </select>
+            </div>
+            <!-- supervisor -->
+            <div class="form-group">
+                <label for="supervisor">Would you be willing to discuss a mental health issue with your direct supervisor(s)?</label>
+                <select class="form-control" id="supervisor" name="supervisor" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Some of them">Some of them</option>
+                </select>
+            </div>
+            <!-- mental_vs_physical -->
+            <div class="form-group">
+                <label for="mental_vs_physical">Do you feel that your employer takes mental health as seriously as physical health?</label>
+                <select class="form-control" id="mental_vs_physical" name="mental_vs_physical" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Don't know">Don't know</option>
+                </select>
+            </div>
+            <!-- obs_consequence -->
+            <div class="form-group">
+                <label for="obs_consequence">Have you heard of or observed negative consequences for coworkers with mental health conditions in your workplace?</label>
+                <select class="form-control" id="obs_consequence" name="obs_consequence" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <div class="pre">
+            <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS (optional, for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
